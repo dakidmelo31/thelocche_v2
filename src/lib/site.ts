@@ -5,6 +5,9 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+/** Online booking site. Every "Book" button on the site links here. */
+export const BOOKING_URL = "https://booking.thelocche.com";
+
 export const CONTACT = {
   city: "Andover, Minnesota",
   phone: "+1 502 808 4131",

@@ -6,8 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS } from "@/lib/site";
-import { BookingDialog } from "@/components/booking-dialog";
+import { BOOKING_URL, NAV_LINKS } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -39,7 +38,7 @@ export function SiteHeader() {
           aria-label="LocChé home"
         >
           <Image
-            src="/images/logo.png"
+            src="/images/g-logo.png"
             alt="LocChé"
             width={200}
             height={46}
@@ -73,29 +72,18 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <BookingDialog
-            trigger={(openDialog) => (
-              <button
-                type="button"
-                onClick={openDialog}
-                className="group relative hidden overflow-hidden border border-gold px-7 py-3 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-gold md:inline-flex"
-              >
-                <span
-                  className="absolute inset-0 origin-left scale-x-0 brand-gradient transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
-                  aria-hidden
-                />
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
-                  Book Now
-                </span>
-              </button>
-            )}
-          />
+          <a
+            href={BOOKING_URL}
+            className="hidden rounded-full brand-gradient px-7 py-3 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-primary-foreground shadow-[0_8px_22px_rgba(209,169,58,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 md:inline-flex"
+          >
+            Book Now
+          </a>
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center border border-border text-foreground lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -120,17 +108,12 @@ export function SiteHeader() {
                 </Link>
               );
             })}
-            <BookingDialog
-              trigger={(openDialog) => (
-                <button
-                  type="button"
-                  onClick={openDialog}
-                  className="mt-6 inline-flex items-center justify-center brand-gradient px-7 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-white"
-                >
-                  Book an Appointment
-                </button>
-              )}
-            />
+            <a
+              href={BOOKING_URL}
+              className="mt-6 inline-flex items-center justify-center rounded-full brand-gradient px-7 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-primary-foreground"
+            >
+              Book an Appointment
+            </a>
           </nav>
         </div>
       )}

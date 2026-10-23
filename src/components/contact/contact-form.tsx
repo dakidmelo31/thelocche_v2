@@ -13,7 +13,20 @@ const FIELDS = [
 ] as const;
 
 const INPUT =
-  "mt-3 w-full border-b border-border bg-transparent pb-3 font-sans text-base text-foreground outline-none transition-colors focus:border-gold";
+  "relative z-10 mt-3 block w-full bg-transparent px-5 pb-3 pt-2 font-sans text-base text-foreground outline-none";
+
+/**
+ * The field's underline: a line along the bottom whose two ends curl upward,
+ * like a pill that stops part-way. Turns gold when the field has focus.
+ */
+function Curve() {
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 bottom-0 h-6 rounded-b-xl border-x border-b border-border transition-colors duration-300 group-focus-within:border-gold"
+    />
+  );
+}
 
 /**
  * No server needed: submitting opens the visitor's email app with the message
@@ -50,7 +63,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-10 md:pt-6">
       {FIELDS.map((field) => (
-        <div key={field.name} className="relative">
+        <div key={field.name} className="group relative">
           <label
             htmlFor={field.name}
             className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
@@ -64,10 +77,11 @@ export function ContactForm() {
             required={field.required}
             className={INPUT}
           />
+          <Curve />
         </div>
       ))}
 
-      <div>
+      <div className="group relative">
         <label
           htmlFor="details"
           className="block font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground"
@@ -81,11 +95,12 @@ export function ContactForm() {
           required
           className={cn(INPUT, "resize-none")}
         />
+        <Curve />
       </div>
 
       <button
         type="submit"
-        className="w-full brand-gradient px-10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-white transition-transform hover:scale-[1.01]"
+        className="w-full rounded-full brand-gradient px-10 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.22em] text-primary-foreground transition-transform hover:scale-[1.01]"
       >
         Send message →
       </button>

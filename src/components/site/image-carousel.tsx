@@ -117,16 +117,12 @@ export function ImageCarousel({
             </div>
           ))}
         </div>
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-          aria-hidden
-        />
       </div>
 
       {multiple && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-4 top-4 z-20 border border-white/20 bg-black/40 px-3 py-1 font-accent text-[11px] tabular-nums tracking-[0.18em] text-white backdrop-blur-sm"
+          className="pointer-events-none absolute right-4 top-4 z-20 rounded-full border border-coral/60 bg-white/85 px-3 py-1 font-accent text-[11px] tabular-nums tracking-[0.18em] text-foreground backdrop-blur-sm"
         >
           {index + 1} / {total}
         </span>

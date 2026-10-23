@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { BookTrigger } from "@/components/booking-dialog";
+import { BOOKING_URL } from "@/lib/site";
 import { ImageCarousel } from "@/components/site/image-carousel";
 
 export type GalleryItem = {
@@ -15,7 +15,7 @@ export type GalleryItem = {
 export function GalleryCard({ item }: { item: GalleryItem }) {
   return (
     <article className="flex flex-col">
-      <div className="group relative aspect-[3/4] overflow-hidden border border-border">
+      <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-border">
         <ImageCarousel
           images={item.images}
           alt={item.name}
@@ -23,7 +23,7 @@ export function GalleryCard({ item }: { item: GalleryItem }) {
           layerClassName="transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-24 group-hover:scale-105"
         >
           {/* Revealed description panel */}
-          <div className="absolute inset-x-0 bottom-0 z-10 translate-y-full bg-[var(--surface-2)] p-6 transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0">
+          <div className="absolute inset-x-0 bottom-0 z-10 translate-y-full bg-secondary p-6 transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0">
             <h3 className="font-serif text-2xl text-foreground">{item.name}</h3>
             <p className="mt-2 font-sans text-[15px] font-light leading-relaxed text-muted-foreground">
               {item.description}
@@ -32,7 +32,7 @@ export function GalleryCard({ item }: { item: GalleryItem }) {
         </ImageCarousel>
 
         {/* Category chip */}
-        <span className="pointer-events-none absolute left-4 top-4 z-20 border border-coral/60 bg-black/30 px-3 py-1 font-accent text-[11px] uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+        <span className="pointer-events-none absolute left-4 top-4 z-20 rounded-full border border-coral/60 bg-white/85 px-3 py-1 font-accent text-[11px] uppercase tracking-[0.18em] text-foreground backdrop-blur-sm">
           {item.category}
         </span>
       </div>
@@ -41,13 +41,13 @@ export function GalleryCard({ item }: { item: GalleryItem }) {
       <div className="mt-5">
         <h3 className="font-serif text-2xl text-foreground">{item.name}</h3>
       </div>
-      <BookTrigger
-        service={item.name}
-        className="group/btn mt-4 inline-flex items-center justify-between border border-border px-5 py-3.5 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors duration-300 hover:border-gold hover:text-gold"
+      <a
+        href={BOOKING_URL}
+        className="group/btn mt-4 inline-flex items-center justify-between rounded-full border border-border px-5 py-3.5 font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors duration-300 hover:border-gold hover:text-gold"
       >
         Book this Style
         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-      </BookTrigger>
+      </a>
     </article>
   );
 }

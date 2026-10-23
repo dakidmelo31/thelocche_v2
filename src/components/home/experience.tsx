@@ -13,28 +13,32 @@ const STATS = [
 
 export function Experience() {
   return (
-    <section className="relative overflow-hidden border-y border-border bg-[var(--surface-2)]">
+    <section className="relative overflow-hidden bg-secondary">
       <div className="mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-0 lg:grid-cols-2">
-        {/* Video */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[640px]">
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={EXPERIENCE_POSTER}
-          >
-            <source src={EXPERIENCE_VIDEO} type="video/mp4" />
-          </video>
-          <div
-            className="absolute inset-0 bg-black/45 mix-blend-multiply"
-            aria-hidden
-          />
+        {/* Video, framed in an arch */}
+        <div className="flex items-center justify-center px-6 py-16 lg:px-20 lg:py-28">
+          <div className="relative aspect-[4/5] w-full max-w-[460px]">
+            <div className="absolute inset-0 overflow-hidden rounded-t-full rounded-b-3xl bg-background shadow-[0_30px_60px_rgba(22,19,15,0.12)]">
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={EXPERIENCE_POSTER}
+              >
+                <source src={EXPERIENCE_VIDEO} type="video/mp4" />
+              </video>
+            </div>
+            <div
+              className="pointer-events-none absolute -inset-3 rounded-t-full rounded-b-[2.5rem] border border-coral"
+              aria-hidden
+            />
+          </div>
         </div>
 
         {/* Copy */}
-        <div className="flex flex-col gap-8 px-6 py-20 lg:px-20 lg:py-32">
+        <div className="flex flex-col gap-8 px-6 pb-20 lg:px-20 lg:py-32 lg:pb-32">
           <SectionLabel>The LocChé Experience</SectionLabel>
           <h2 className="font-serif text-5xl font-light leading-tight tracking-tight text-foreground md:text-6xl">
             Quiet luxury, expressed through{" "}
@@ -52,7 +56,7 @@ export function Experience() {
             {STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col gap-1 border-l-2 border-gold/40 pl-4"
+                className="flex flex-col gap-1 border-l-2 border-coral pl-4"
               >
                 <dt className="order-2 font-accent text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
                   {stat.label}

@@ -5,12 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Square corners, same as DBS */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
+  /* Soft, curved corners for the light luxury look */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -38,7 +38,7 @@
   --color-on-media: var(--on-media);
 
   /* DBS brand tokens. Class names (gold, gold-deep, coral, surface-2) are kept
-     so DBS components copy over 1:1; the values below are LocChé purple. */
+     so DBS components copy over 1:1; the values below are LocChé gold. */
   --color-gold: var(--gold);
   --color-gold-deep: var(--gold-deep);
   --color-coral: var(--coral);
@@ -48,7 +48,6 @@
   --font-display: var(--font-cormorant), serif;
   --font-serif: var(--font-cormorant), serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-accent: var(--font-kalnia), serif;
   --font-mono: ui-monospace, monospace;
   --animate-rise: rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -81,55 +80,132 @@
 }
 
 :root {
-  --background: oklch(0.145 0.008 320);
-  --foreground: oklch(0.97 0.006 310);
-  --card: oklch(0.19 0.01 320);
-  --card-foreground: oklch(0.97 0.006 310);
-  --popover: oklch(0.16 0.008 320);
-  --popover-foreground: oklch(0.97 0.006 310);
-  --primary: oklch(0.61 0.24 295);
-  --primary-foreground: oklch(0.99 0.003 300);
-  --secondary: oklch(0.95 0.012 300);
-  --secondary-foreground: oklch(0.18 0.01 320);
-  --muted: oklch(0.23 0.012 320);
-  --muted-foreground: oklch(0.72 0.012 310);
-  --accent: oklch(0.69 0.2 296);
-  --accent-foreground: oklch(0.99 0.003 300);
-  --destructive: oklch(0.62 0.21 25);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.61 0.24 295);
-  --surface: oklch(0.145 0.008 320);
-  --surface-dim: oklch(0.115 0.008 320);
-  --surface-bright: oklch(0.23 0.012 320);
-  --hairline: oklch(1 0 0 / 11%);
-  --on-media: oklch(0.99 0.003 300);
+  color-scheme: light;
+
+  /* LocChé bright luxury: pure white, champagne + yellow gold, warm-black ink.
+     No brown: the old olive-bronze text gold is replaced by a cleaner gold. */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #8f6d12;
+  --primary-foreground: #000000;
+  --secondary: #ffffff;
+  --secondary-foreground: #000000;
+  --muted: #ffffff;
+  --muted-foreground: #000000;
+  --accent: #d1a93a;
+  --accent-foreground: #000000;
+  --destructive: #c23a3a;
+  --destructive-foreground: #ffffff;
+  --border: rgb(22 19 15 / 10%);
+  --input: rgb(22 19 15 / 16%);
+  --ring: #d1a93a;
+  --surface: #ffffff;
+  --surface-dim: #16130f;
+  --surface-bright: #ffffff;
+  --hairline: rgb(22 19 15 / 8%);
+  --on-media: #ffffff;
   --overlay-veil: linear-gradient(
     to top,
-    oklch(0.08 0.01 320 / 96%),
-    oklch(0.08 0.01 320 / 35%) 58%,
-    oklch(0.08 0.01 320 / 18%)
+    oklch(0.1 0.01 80 / 85%),
+    oklch(0.1 0.01 80 / 25%) 58%,
+    oklch(0.1 0.01 80 / 8%)
   );
 
-  /* DBS brand tokens in LocChé purple (logo purple is #7407fc) */
-  --surface-2: oklch(0.175 0.01 320);
-  --gold: #b48cff; /* light violet: labels, borders, accents on dark */
-  --gold-deep: #9a5bff; /* hover state for accent links */
-  --coral: #7407fc; /* logo purple */
-  /* Fill gradient keeps white text readable; text gradient stays light */
+  /* Brand tokens (class names kept so components keep working).
+     gold      = small text + hover borders (4.8:1 on white, passes AA)
+     gold-deep = hover state, one step darker
+     coral     = bright gold for lines, fills and decoration */
+  --surface-2: #fbf9f4;
+  --gold: #8f6d12;
+  --gold-deep: #6e5309;
+  --coral: #d1a93a;
   --gradient-fill: linear-gradient(
     90deg,
-    #9a5bff 0%,
-    #7407fc 55%,
-    #5a0bd0 100%
+    #efdba0 0%,
+    #e2c265 55%,
+    #d1a93a 100%
   );
   --gradient-text: linear-gradient(
     90deg,
-    #cdb2ff 0%,
-    #a678ff 50%,
-    #8a3dff 100%
+    #9e7a1c 0%,
+    #c29a2e 50%,
+    #a98424 100%
   );
+}
+
+/* Dark band: put `theme-dark` on any section (hero, footer, CTA over a photo)
+   and every token inside flips to luxury black + light gold. */
+.theme-dark {
+  color-scheme: dark;
+  --background: #161311;
+  --foreground: #faf7f2;
+  --card: #1f1b18;
+  --card-foreground: #faf7f2;
+  --primary: #d1a93a;
+  --primary-foreground: #1a1715;
+  --muted: #221d1a;
+  --muted-foreground: #a9a39a;
+  --border: rgb(250 247 242 / 14%);
+  --input: rgb(250 247 242 / 20%);
+  --surface: #161311;
+  --surface-2: #161311;
+  --hairline: rgb(250 247 242 / 12%);
+  --gold: #d1a93a;
+  --gold-deep: #efdba0;
+  --gradient-text: linear-gradient(
+    90deg,
+    #f6e7b4 0%,
+    #d1a93a 50%,
+    #efdba0 100%
+  );
+}
+
+/* Gold shooting star that runs along the hero arch border.
+   Paths use pathLength="100", so every number below is a % of the outline.
+   --arch-start / --arch-end: where on the outline the star starts and fades
+   out (0 = top of the arch, 25 = where the curve meets the right side,
+   50 = middle of the bottom edge, 100 = back at the top). */
+.arch-star {
+  --arch-start: 0;
+  --arch-end: 50;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: var(--len) 200;
+  animation: arch-star 7s cubic-bezier(0.45, 0.05, 0.35, 1) infinite;
+  opacity: 0;
+}
+.arch-star-glow { --len: 16; }
+.arch-star-tail { --len: 12; }
+.arch-star-head { --len: 3.5; }
+
+@keyframes arch-star {
+  0% {
+    stroke-dashoffset: calc(var(--len) - var(--arch-start));
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  44% {
+    stroke-dashoffset: calc(var(--len) - var(--arch-end));
+    opacity: 1;
+  }
+  50%,
+  100% {
+    stroke-dashoffset: calc(var(--len) - var(--arch-end) - 2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-star {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 @utility veil {
@@ -145,6 +221,12 @@
 }
 
 /* DBS utilities */
+/* `font-accent` is the small uppercase label font. In LocChé it is Inter
+   (the "eyebrow" style), so no extra display font is loaded. */
+@utility font-accent {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+}
 @utility brand-gradient {
   background-image: var(--gradient-fill);
 }

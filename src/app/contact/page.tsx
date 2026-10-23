@@ -33,7 +33,8 @@ export default function ContactPage() {
             </h1>
             <p className="mt-8 max-w-md font-sans text-base font-light leading-relaxed text-muted-foreground">
               Questions about a style, a service, or your visit? Send us a
-              message, or call, text, or email to book your appointment.
+              message, or call or email us. Ready to book? Reserve your
+              appointment online.
             </p>
 
             <ul className="mt-12 space-y-4 font-sans text-[13px] font-semibold uppercase tracking-[0.22em]">

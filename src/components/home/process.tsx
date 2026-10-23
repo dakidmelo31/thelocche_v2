@@ -14,7 +14,7 @@ const PILLARS = [
   {
     label: "Experience",
     title: "A Seamless Visit",
-    body: "Easy scheduling by call, text, or email, a calm space, and focused attention from consultation to final look.",
+    body: "Easy online booking, a calm space, and focused attention from consultation to final look.",
   },
 ];
 
@@ -33,17 +33,17 @@ export function Process() {
           </p>
         </div>
 
-        <div className="flex flex-col lg:col-span-8">
+        <div className="flex flex-col gap-6 lg:col-span-8">
           {PILLARS.map((p, i) => (
             <div
               key={p.label}
-              className="flex flex-col gap-4 border-t border-border py-12 first:border-t-0 first:pt-0 md:flex-row md:gap-12"
+              className="flex flex-col gap-4 rounded-3xl border border-border bg-[var(--surface-2)] p-8 md:flex-row md:gap-12 md:p-12"
             >
-              <span className="font-serif text-4xl italic text-gold/30">
+              <span className="font-serif text-5xl italic leading-none text-coral md:text-6xl">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div className="flex flex-col gap-3">
-                <span className="font-accent text-[12px] uppercase tracking-[0.28em] text-gold">
+                <span className="font-accent text-[12px] uppercase tracking-[0.28em] text-foreground">
                   {p.label}
                 </span>
                 <h3 className="font-serif text-3xl text-foreground md:text-4xl">

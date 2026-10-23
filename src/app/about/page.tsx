@@ -55,7 +55,7 @@ export default function AboutPage() {
 
       {/* Banner (placeholder until the photo arrives) + story */}
       <section className="mx-auto max-w-[1600px] px-6 pt-16 lg:px-20 lg:pt-24">
-        <div className="relative aspect-[3/1] w-full overflow-hidden border border-border bg-[var(--surface-2)]">
+        <div className="relative aspect-[3/1] w-full overflow-hidden rounded-2xl border border-border bg-[var(--surface-2)]">
           {ABOUT_BANNER ? (
             <Image
               src={ABOUT_BANNER}
@@ -76,10 +76,6 @@ export default function AboutPage() {
               </span>
             </>
           )}
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"
-            aria-hidden
-          />
         </div>
 
         <div className="grid grid-cols-1 gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-28">
@@ -114,13 +110,13 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="border-y border-border bg-[var(--surface-2)]">
+      <section className="border-y border-border bg-secondary">
         <div className="mx-auto max-w-[1600px] px-6 py-24 lg:px-20 lg:py-32">
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
             {VALUES.map((v) => (
               <div
                 key={v.label}
-                className="flex flex-col gap-4 bg-background p-10 lg:p-12"
+                className="flex flex-col gap-4 bg-surface-2 p-10 lg:p-12"
               >
                 <span className="font-accent text-[13px] uppercase tracking-[0.24em] text-gold">
                   {v.label}
@@ -133,39 +129,92 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      {/* Video + pull quote */}
-      <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden
-        >
-          <source src={ABOUT_VIDEO} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/60" aria-hidden />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"
-          aria-hidden
-        />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 py-28 text-center lg:py-40">
-          <p className="font-serif text-3xl font-light italic leading-snug text-white md:text-5xl md:leading-tight">
-            &ldquo;Soft hands. Clean parts.{" "}
-            <span className="italic text-brand-gradient">
-              Styles that feel like you.
+      {/* Video card: gold card like the CTA banner, text on the left and the
+          video on the right fading out into the gold from the card's centre.
+          The layout CSS lives in the <style> below so it never depends on
+          Tailwind picking up new classes. */}
+      <section className="bg-background px-6 py-20 lg:px-20 lg:py-28">
+        <div className="about-card">
+          <div className="about-card-copy">
+            <p className="font-serif text-4xl font-light leading-snug text-foreground md:text-5xl md:leading-tight">
+              &ldquo;Soft hands. Clean parts.{" "}
+              <span className="italic">Styles that feel like you.</span>&rdquo;
+            </p>
+            <span className="font-accent text-[13px] uppercase tracking-[0.24em] text-foreground/70">
+              — The LocChé Standard
             </span>
-            &rdquo;
-          </p>
-          <span className="mt-8 block font-accent text-[13px] uppercase tracking-[0.24em] text-white/70">
-            — The LocChé Standard
-          </span>
+          </div>
+
+          <div className="about-card-media">
+            <video autoPlay muted loop playsInline aria-hidden>
+              <source src={ABOUT_VIDEO} type="video/mp4" />
+            </video>
+          </div>
         </div>
+
+        <style>{`
+          .about-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            max-width: 1600px;
+            margin: 0 auto;
+            border-radius: 2rem;
+            background: linear-gradient(135deg, #f6e7b4, #efdba0 50%, #d1a93a);
+          }
+          .about-card-copy {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 3.5rem 2rem 1.5rem;
+            text-align: center;
+          }
+          .about-card-media {
+            position: relative;
+            width: 100%;
+            height: 20rem;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 55%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 55%);
+          }
+          .about-card-media video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          @media (min-width: 1024px) {
+            .about-card {
+              flex-direction: row;
+              align-items: center;
+              min-height: 560px;
+            }
+            .about-card-copy {
+              width: 50%;
+              align-items: flex-start;
+              text-align: left;
+              padding: 4rem 5rem;
+            }
+            .about-card-media {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              width: 50%;
+              height: auto;
+              -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+              mask-image: linear-gradient(to right, transparent 0%, black 60%);
+            }
+          }
+        `}</style>
       </section>
 
       {/* CTA */}
-      <section className="border-t border-border bg-[var(--surface-2)]">
+      <section className="border-t border-border bg-secondary">
         <div className="mx-auto flex max-w-3xl flex-col items-center px-6 py-24 text-center lg:py-32">
           <h2 className="font-serif text-4xl font-light leading-tight tracking-tight text-foreground md:text-5xl">
             Begin your LocChé{" "}

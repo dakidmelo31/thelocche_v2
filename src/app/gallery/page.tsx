@@ -94,17 +94,17 @@ const ITEMS: GalleryItem[] = [
       "Detailed, long-lasting twists with a clean finish that stay light on the scalp and easy to wear.",
     images: ["/images/minitwists.webp"],
   },
-  // {
-  //   name: "Braids",
-  //   category: "Braids",
-  //   description:
-  //     "Clean parts, a polished finish, and a bold lightweight look that wears beautifully.",
-  //   images: [
-  //     "/images/braids3.webp",
-  //     "/images/braids2.webp",
-  //     "/images/braids1.webp",
-  //   ],
-  // },
+  {
+    name: "Braids",
+    category: "Braids",
+    description:
+      "Clean parts, a polished finish, and a bold lightweight look that wears beautifully.",
+    images: [
+      "/images/braids3.webp",
+      "/images/braids2.webp",
+      "/images/braids1.webp",
+    ],
+  },
   {
     name: "Instant Locs",
     category: "Locs",
@@ -142,7 +142,7 @@ export default function GalleryPage() {
 
       {/* Recent-work banner (placeholder until the photo arrives) */}
       <section className="mx-auto max-w-[1600px] px-6 pt-12 lg:px-20">
-        <div className="relative aspect-[3/1] w-full overflow-hidden border border-border bg-[var(--surface-2)]">
+        <div className="relative aspect-[3/1] w-full overflow-hidden rounded-2xl border border-border bg-secondary">
           {BANNER_IMAGE ? (
             <Image
               src={BANNER_IMAGE}
@@ -158,16 +158,12 @@ export default function GalleryPage() {
                 className="absolute inset-0 brand-gradient opacity-10"
                 aria-hidden
               />
-              <span className="absolute inset-0 flex items-center justify-center font-accent text-[12px] uppercase tracking-[0.28em] text-muted-foreground">
+              <span className="absolute inset-0 flex items-center justify-center font-accent text-[12px] uppercase tracking-[0.28em] text-surface-dim">
                 Banner image coming soon
               </span>
             </>
           )}
-          <div
-            className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"
-            aria-hidden
-          />
-          <span className="absolute bottom-4 left-4 font-accent text-[12px] uppercase tracking-[0.2em] text-white">
+          <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-4 py-2 font-accent text-[12px] uppercase tracking-[0.2em] text-foreground">
             Recent Work — Fresh from the Chair
           </span>
         </div>

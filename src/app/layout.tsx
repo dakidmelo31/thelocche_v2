@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter, Kalnia } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
@@ -17,12 +17,6 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
 });
 
-const kalnia = Kalnia({
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
-  variable: "--font-kalnia",
-});
-
 export const metadata: Metadata = {
   title: "LocChé | Rooted in Culture. Refined in Craft.",
   description:
@@ -38,13 +32,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   icons: {
-    icon: "/images/icon.svg",
+    icon: "/images/g-icon.png",
   },
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#0c090c",
+  colorScheme: "light",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -55,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${inter.variable} ${cormorant.variable} ${kalnia.variable} bg-background`}
+      className={`${inter.variable} ${cormorant.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         <div className="flex min-h-screen flex-col">

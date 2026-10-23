@@ -6,8 +6,7 @@ import {
   FaPinterest,
   FaTiktok,
 } from "react-icons/fa6";
-import { CONTACT, NAV_LINKS, SOCIAL_LINKS } from "@/lib/site";
-import { BookTrigger } from "@/components/booking-dialog";
+import { BOOKING_URL, CONTACT, NAV_LINKS, SOCIAL_LINKS } from "@/lib/site";
 
 const SOCIAL_ICONS = {
   Instagram: FaInstagram,
@@ -18,12 +17,12 @@ const SOCIAL_ICONS = {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-[var(--surface-2)]">
-      <div className="mx-auto max-w-[1600px] px-6 py-20 lg:px-20 lg:py-28">
+    <footer className="border-t-2 border-coral bg-secondary">
+      <div className="mx-auto max-w-[1600px] px-6 pb-6 pt-20 lg:px-20 lg:pb-8 lg:pt-24">
         <div className="grid grid-cols-1 gap-12 border-b border-border pb-16 md:grid-cols-4">
           <div className="md:col-span-1">
             <Image
-              src="/images/logo.png"
+              src="/images/g-logo.png"
               alt="LocChé"
               width={180}
               height={41}
@@ -52,9 +51,12 @@ export function SiteFooter() {
                 </li>
               ))}
               <li>
-                <BookTrigger className="transition-colors hover:text-foreground">
+                <a
+                  href={BOOKING_URL}
+                  className="transition-colors hover:text-foreground"
+                >
                   Book
-                </BookTrigger>
+                </a>
               </li>
             </ul>
           </div>
@@ -97,7 +99,7 @@ export function SiteFooter() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold hover:text-gold"
                     aria-label={social.label}
                   >
                     <Icon className="h-5 w-5" />
@@ -108,7 +110,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 pt-6 md:flex-row">
           <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
             © {new Date().getFullYear()} LocChé. All rights reserved.
           </p>
